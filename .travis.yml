@@ -8,6 +8,7 @@ cache:
   directories:
     - node_modules
 deploy:
+  skip_cleanup: true
   provider: heroku
   app: starship-react 
   api_key:
