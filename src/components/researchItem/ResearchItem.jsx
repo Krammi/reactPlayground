@@ -14,4 +14,14 @@ export default class ResearchItem extends React.Component {
 			</div>
         </div>
     }
-};
+}
+
+ResearchItem.propTypes = {
+	level: React.PropTypes.number.isRequired,
+	productionIncrease: React.PropTypes.number.isRequired,
+	baseProduction: React.PropTypes.number.isRequired,
+	doResearch: React.PropTypes.func.isRequired,
+	name: React.PropTypes.string.isRequired,
+	upgradeCost: React.PropTypes.number.isRequired,
+	id: React.PropTypes.number.isRequired
+}

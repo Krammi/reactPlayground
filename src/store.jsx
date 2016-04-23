@@ -1,6 +1,5 @@
-import {applyMiddleware, createStore} from 'redux';
+import {createStore} from 'redux';
 import reducer from './reducer';
-import {Map, fromJS} from 'immutable';
 
 const game = {
 	errorMsg: '',

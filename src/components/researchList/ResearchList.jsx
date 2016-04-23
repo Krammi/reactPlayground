@@ -28,7 +28,13 @@ export class ResearchList extends React.Component {
 		</section>
 	}
 
-};
+}
+
+ResearchList.propTypes = {
+	researchList: React.PropTypes.object.isRequired,
+	research: React.PropTypes.func.isRequired
+}
+
 function mapStateToProps(state) {
 	return {
 		researchList: state.get('researchList')

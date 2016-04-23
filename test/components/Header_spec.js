@@ -2,13 +2,13 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import {Header} from '../../src/components/header/Header';
 import {expect} from 'chai';
-import {List, Map, fromJS} from 'immutable';
+import {fromJS} from 'immutable';
 import {gameInitialState} from '../../src/store';
 
 const {renderIntoDocument,
     scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass,
-    Simulate} = TestUtils;
+	findRenderedDOMComponentWithClass
+} = TestUtils;
 
 function setup(initalState = gameInitialState) {
 	const props = fromJS(initalState);
@@ -35,7 +35,7 @@ describe('Header', () => {
 		expect(foundTotalIron.textContent).to.contain('Iron: 100');
 
     });
-it('Displayes a error message', () => {
+	it('Displayes a error message', () => {
 		const errorMessage = 'This is a error';
 
 		const initialState = fromJS(gameInitialState).set('errorMsg', errorMessage);

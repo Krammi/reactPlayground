@@ -16,11 +16,11 @@ export function research(state, researchId) {
 		researchedItem = researchedItem.update('level', level => level + 1);
 		totalIron -= costOfResearch;
 		let newState = state.update('researchList', researchList => researchList.set(researchObjIndex, researchedItem));
-		const spaceShipUpdated = spaceShip.update('iron', iron => totalIron);
-		newState = newState.update('spaceShip', ship => spaceShipUpdated);
+		const spaceShipUpdated = spaceShip.set('iron', totalIron);
+		newState = newState.set('spaceShip', spaceShipUpdated);
 		return newState;
 	} else {
-		const newState = state.update('errorMsg', msg => 'Not enugh iron');
+		const newState = state.set('errorMsg', 'Not enugh iron');
 		return newState;
 	}
 }
@@ -31,14 +31,13 @@ export function research(state, researchId) {
  */
 export function tick(state) {
 	let spaceShipUpdate = state.get('spaceShip');
-	const researchItems = state.get('researchList').forEach(
+	state.get('researchList').forEach(
 		researchItem => {
 			const productionIncrease = (researchItem.get('productionIncrease') * researchItem.get('level')) + researchItem.get('baseProduction')
 			spaceShipUpdate = spaceShipUpdate.update(researchItem.get('name'), iron => iron + productionIncrease);
 		}
 	);
 
-
-	const newState = state.update('spaceShip', spaceShip => spaceShipUpdate);
+	const newState = state.set('spaceShip', spaceShipUpdate);
 	return newState;
 }

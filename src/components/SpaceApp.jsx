@@ -25,10 +25,14 @@ export class SpaceApp extends React.Component {
             <ResearchListContainer/>
         </div>
     }
-};
+}
 
+SpaceApp.propTypes = {
+	tick: React.PropTypes.func.isRequired
+}
+/* eslint-disable */
 function mapStateToProps(state) {
 	return {};
 }
-
+/* eslint-enable */
 export const SpaceAppContainer = connect(mapStateToProps, actions)(SpaceApp);

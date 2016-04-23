@@ -2,7 +2,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import {ResearchList} from '../../src/components/researchList/ResearchList';
 import {expect} from 'chai';
-import {List, Map, fromJS} from 'immutable';
+import {fromJS} from 'immutable';
 const {renderIntoDocument,
     scryRenderedDOMComponentsWithTag} = TestUtils;
 import {gameInitialState} from '../../src/store';

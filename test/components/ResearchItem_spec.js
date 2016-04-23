@@ -2,12 +2,12 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import ResearchItem from '../../src/components/researchItem/ResearchItem';
 import {expect} from 'chai';
-import {List, Map, fromJS} from 'immutable';
+import {fromJS} from 'immutable';
 import {gameInitialState} from '../../src/store';
 
 const {renderIntoDocument,
-    scryRenderedDOMComponentsWithTag,
-    Simulate} = TestUtils;
+    scryRenderedDOMComponentsWithTag
+} = TestUtils;
 
 function setup() {
 	const initalState = fromJS(gameInitialState);

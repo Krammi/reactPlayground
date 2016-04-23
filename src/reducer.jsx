@@ -2,7 +2,7 @@ import {Map, fromJS} from 'immutable';
 import {research, tick} from './core';
 
 export default function (state = Map(), action) {
-    var state = fromJS(state)
+    state = fromJS(state)
 
     switch (action.type) {
         case 'TICK':

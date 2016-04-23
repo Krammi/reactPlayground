@@ -1,4 +1,4 @@
-import {List, Map, fromJS} from 'immutable';
+import {fromJS} from 'immutable';
 import {expect} from 'chai';
 import reducer from '../src/reducer';
 import {gameInitialState} from '../src/store';
@@ -15,7 +15,7 @@ function setup() {
 describe('reducer', () => {
     it('TICK - increases the researched item value in the spaceShip', () => {
         const {initialState} = setup();
-        const researchObj = initialState.get('researchList').get(0).update('level', level => 1);
+        const researchObj = initialState.get('researchList').get(0).set('level', 1);
 
         const changedInitialState = initialState.update('researchList', researchList => researchList.set(0, researchObj));
 
@@ -29,8 +29,8 @@ describe('reducer', () => {
     });
     it('RESEARCH - research an item with enough iron', () => {
         const {initialState} = setup();
-        const spaceShip = initialState.get('spaceShip').update('iron', iron => 100);
-        const changedInitialState = initialState.update('spaceShip', ship => spaceShip);
+        const spaceShip = initialState.get('spaceShip').set('iron', 100);
+        const changedInitialState = initialState.set('spaceShip', spaceShip);
         const action = {
             type: 'RESEARCH',
             researchId: 1
@@ -43,8 +43,8 @@ describe('reducer', () => {
     });
     it('RESEARCH - research an item without enough iron', () => {
         const {initialState} = setup();
-        const spaceShip = initialState.get('spaceShip').update('iron', iron => 0);
-        const changedInitialState = initialState.update('spaceShip', ship => spaceShip);
+        const spaceShip = initialState.get('spaceShip').set('iron', 0);
+        const changedInitialState = initialState.set('spaceShip', spaceShip);
 
         const action = {
             type: 'RESEARCH',
