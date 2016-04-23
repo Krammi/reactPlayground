@@ -10,7 +10,7 @@
 		"lint": "eslint ./src --ext .js --ext .jsx --cache",
 		"build:prod": "webpack --config ./webpack.prod.config.js --progress --colors --verbose",
 		"start:prod": "node ./src/server/app.js",
-		"start": "npm run start:prod"
+		"start": "npm run build:prod && npm run start:prod"
 	},
 	"babel": {
 		"presets": [
