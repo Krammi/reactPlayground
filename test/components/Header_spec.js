@@ -25,7 +25,7 @@ function setup(initalState = gameInitialState) {
 }
 
 describe('Header', () => {
-    it('displayes the header', () => {
+    it('Displayes the total Iron', () => {
         const {output} = setup();
 
         const foundSection = scryRenderedDOMComponentsWithTag(output, 'section');
@@ -35,7 +35,7 @@ describe('Header', () => {
 		expect(foundTotalIron.textContent).to.contain('Iron: 100');
 
     });
-it('displayes a errorMsg', () => {
+it('Displayes a error message', () => {
 		const errorMessage = 'This is a error';
 
 		const initialState = fromJS(gameInitialState).set('errorMsg', errorMessage);
