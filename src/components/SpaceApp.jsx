@@ -1,7 +1,10 @@
 import React from 'react';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
-import {ResearchListContainer} from './ResearchList'
+import {ResearchListContainer} from './researchList/ResearchList'
+import styles from './SpaceApp.css'
+import {HeaderContainer} from './header/Header'
+
 
 export class SpaceApp extends React.Component {
     constructor(props) {
@@ -9,6 +12,7 @@ export class SpaceApp extends React.Component {
     }
 
     componentDidMount() {
+
         this.timer = setInterval(this.props.tick, 1000);
     }
     componentWillUnmount() {
@@ -16,22 +20,15 @@ export class SpaceApp extends React.Component {
     }
 
     render() {
-        return <div>
-            <span>{this.props.error}</span>
-            <span>Iron: {this.props.spaceShip.get('iron') }</span>
-            <span>Defence: {this.props.spaceShip.get('defence') }</span>
+        return <div className={styles.root}>
+			<HeaderContainer/>
             <ResearchListContainer/>
         </div>
     }
-
-}
-
+};
 
 function mapStateToProps(state) {
-    return {
-        spaceShip: state.get('spaceShip'),
-        error: state.get('errorMsg')
-    };
+	return {};
 }
 
 export const SpaceAppContainer = connect(mapStateToProps, actions)(SpaceApp);

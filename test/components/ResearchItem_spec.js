@@ -1,32 +1,23 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import ResearchItem from '../../src/components/ResearchItem';
+import ResearchItem from '../../src/components/researchItem/ResearchItem';
 import {expect} from 'chai';
 import {List, Map, fromJS} from 'immutable';
+import {gameInitialState} from '../../src/store';
 
 const {renderIntoDocument,
-    scryRenderedDOMComponentsWithClass,
+    scryRenderedDOMComponentsWithTag,
     Simulate} = TestUtils;
 
-const item = fromJS({
-    id: 1,
-    name: 'iron',
-    level: 0
-})
-
-
 function setup() {
-    let props = fromJS({
-        id: 1,
-        name: 'iron',
-        level: 0
-    });
+	const initalState = fromJS(gameInitialState);
 
+    const props = initalState.get('researchList').get(0);
     let output = renderIntoDocument(<ResearchItem
-        key={item.get('id') }
-        id={item.get('id') }
-        name={item.get('name') }
-        level={item.get('level') }
+        key={props.get('id') }
+        id={props.get('id') }
+        name={props.get('name') }
+        level={props.get('level') }
         />
     )
     return {
@@ -37,15 +28,9 @@ function setup() {
 
 describe('ResearchItem', () => {
     it('renders an item', () => {
-        const component = renderIntoDocument(
-            <ResearchItem
-                key={item.get('id') }
-                id={item.get('id') }
-                name={item.get('name') }
-                level={item.get('level') }
-                />
-        );
-        const researchItems = scryRenderedDOMComponentsWithClass(component, 'researchButton');
+        const {output} = setup();
+
+        const researchItems = scryRenderedDOMComponentsWithTag(output, 'button');
         expect(researchItems.length).to.equal(1);
     });
 

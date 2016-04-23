@@ -15,9 +15,9 @@ function setup() {
 describe('reducer', () => {
     it('TICK - increases the researched item value in the spaceShip', () => {
         const {initialState} = setup();
-        var researchObj = initialState.get('researchList').get(0).update('level', level => 1);
+        const researchObj = initialState.get('researchList').get(0).update('level', level => 1);
 
-        var changedInitialState = initialState.update('researchList', researchList => researchList.set(0, researchObj));
+        const changedInitialState = initialState.update('researchList', researchList => researchList.set(0, researchObj));
 
         const action = {
             type: 'TICK'
@@ -29,8 +29,8 @@ describe('reducer', () => {
     });
     it('RESEARCH - research an item with enough iron', () => {
         const {initialState} = setup();
-        var spaceShip = initialState.get('spaceShip').update('iron', iron => 100);
-        var changedInitialState = initialState.update('spaceShip', ship => spaceShip);
+        const spaceShip = initialState.get('spaceShip').update('iron', iron => 100);
+        const changedInitialState = initialState.update('spaceShip', ship => spaceShip);
         const action = {
             type: 'RESEARCH',
             researchId: 1
@@ -43,15 +43,15 @@ describe('reducer', () => {
     });
     it('RESEARCH - research an item without enough iron', () => {
         const {initialState} = setup();
-        var spaceShip = initialState.get('spaceShip').update('iron', iron => 0);
-        var changedInitialState = initialState.update('spaceShip', ship => spaceShip);
+        const spaceShip = initialState.get('spaceShip').update('iron', iron => 0);
+        const changedInitialState = initialState.update('spaceShip', ship => spaceShip);
 
         const action = {
             type: 'RESEARCH',
             researchId: 1
         }
         const nextState = reducer(changedInitialState, action);
-        
+
         expect(nextState.get('errorMsg')).to.equal('Not enugh iron');
         expect(nextState.get('spaceShip').get('iron')).to.equal(0);
         expect(nextState.get('researchList').get(0).get('level')).to.equal(0);

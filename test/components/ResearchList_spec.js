@@ -1,24 +1,15 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import {ResearchList} from '../../src/components/ResearchList';
+import {ResearchList} from '../../src/components/researchList/ResearchList';
 import {expect} from 'chai';
 import {List, Map, fromJS} from 'immutable';
 const {renderIntoDocument,
-    scryRenderedDOMComponentsWithClass} = TestUtils;
+    scryRenderedDOMComponentsWithTag} = TestUtils;
+import {gameInitialState} from '../../src/store';
 
 
 function setup() {
-    let props = fromJS({
-        researchList: [
-            {
-                id: 1,
-                name: 'iron',
-                level: 0,
-                baseProduction: 1,
-                productionIncrease: 1
-            }
-        ]
-    });
+    let props = fromJS(gameInitialState);
     let output = renderIntoDocument(<ResearchList researchList={props.get('researchList')}/>)
     return {
         props,
@@ -29,9 +20,13 @@ function setup() {
 describe('ResearchList', () => {
 
     it('renders a list with all available researches', () => {
-        const { output } = setup();
-        const items = scryRenderedDOMComponentsWithClass(output, 'researchItem');
-        expect(items.length).to.equal(1);
+        const { output, props } = setup();
+
+		const totalResearches = props.get('researchList').size;
+
+        const items = scryRenderedDOMComponentsWithTag(output, 'button');
+
+		expect(items.length).to.equal(totalResearches);
         expect(items[0].textContent).to.contain('iron');
     });
 });
