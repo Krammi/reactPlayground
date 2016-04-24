@@ -4,8 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'test/**/*.@(js|jsx)' --require ignore-styles",
-		"test:watch": "npm run test -- --watch --require ignore-styles --watch-extensions jsx",
+		"test": "mocha",
+		"test:watch": "npm run test -- --watch --watch-extensions jsx",
 		"start:dev": "webpack-dev-server",
 		"lint": "eslint ./src --ext .js --ext .jsx --cache",
 		"build:prod": "webpack --config ./webpack.prod.config.js --progress --colors --verbose",
