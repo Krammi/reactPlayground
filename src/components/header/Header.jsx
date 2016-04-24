@@ -20,8 +20,8 @@ Header.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        spaceShip: state.get('spaceShip'),
-        error: state.get('errorMsg')
+        spaceShip: state.game.get('spaceShip'),
+        error: state.game.get('errorMsg')
     };
 }
 

@@ -1,8 +1,9 @@
-import {Map, fromJS} from 'immutable';
+import {fromJS} from 'immutable';
 import {research, tick} from './core';
+import {gameInitialState} from './store';
 
-export default function (state = Map(), action) {
-    state = fromJS(state)
+export default function (state = gameInitialState, action) {
+    // state = fromJS(state)
 
     switch (action.type) {
         case 'TICK':

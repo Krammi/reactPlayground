@@ -33,11 +33,12 @@ export class ResearchList extends React.Component {
 ResearchList.propTypes = {
 	researchList: React.PropTypes.object.isRequired,
 	research: React.PropTypes.func.isRequired
+
 }
 
 function mapStateToProps(state) {
 	return {
-		researchList: state.get('researchList')
+		researchList: state.game.get('researchList')
 	};
 }
 export const ResearchListContainer = connect(mapStateToProps, actions)(ResearchList);

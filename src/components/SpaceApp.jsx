@@ -12,7 +12,6 @@ export class SpaceApp extends React.Component {
     }
 
     componentDidMount() {
-
         this.timer = setInterval(this.props.tick, 1000);
     }
     componentWillUnmount() {
